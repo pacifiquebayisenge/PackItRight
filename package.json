@@ -4,6 +4,7 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
+    "push": "git add . && git commit",
     "prepare": "husky install client/.husky",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -11,7 +12,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx husky add ./client/.husky/pre-commit 'npx pretty-quick --staged ng lint ng test'",
+      "pre-commit": "npx husky add ./client/.husky/pre-commit 'npx pretty-quick --staged ng lint ng test' ",
       "pre-push": "ng build --aot true"
     }
   },
