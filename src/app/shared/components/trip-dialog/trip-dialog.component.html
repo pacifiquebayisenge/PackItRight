@@ -1,0 +1,128 @@
+<div class="trip-dialog-container">
+  <h2>Adding a new trip</h2>
+
+  <div class="content">
+    <form [formGroup]="myForm">
+      <div class="location">
+        <div>
+          <label for="country">Country</label>
+
+          <input
+            type="text"
+            autocomplete="off"
+            name="country"
+            (keyup)="reloadCountrySuggestions()"
+            [ngClass]="
+              country!.touched && country!.invalid ? 'error-class' : ''
+            "
+            formControlName="country"
+          />
+
+          <div class="options">
+            <button
+              type="button"
+              *ngFor="let country of countryFilterList"
+              (click)="setCountry(country, $event.target)"
+              class="option"
+              #buttonRef
+            >
+              {{ country.name }}
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label for="city">City</label>
+          <input
+            type="text"
+            autocomplete="off"
+            name="city"
+            (keyup)="reloadCitySuggestions()"
+            [ngClass]="city!.touched && city!.invalid ? 'error-class' : ''"
+            formControlName="city"
+          />
+
+          <div class="options">
+            <button
+              type="button"
+              *ngFor="let city of cityFilterList"
+              (click)="setCity(city, $event.target)"
+              class="option"
+            >
+              {{ city }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dates">
+        <div *ngIf="startDate?.value">
+          <label for="startDate">Start Date</label>
+          <input
+            readonly
+            type="text"
+            name="startDate"
+            [value]="startDate?.value | date : 'dd-MM-yyyy' || ''"
+          />
+        </div>
+
+        <div *ngIf="endDate?.value">
+          <label for="endDate">End Date</label>
+          <input
+            readonly
+            type="text"
+            name="endDate"
+            [value]="endDate?.value | date : 'dd-MM-yyyy' || ''"
+          />
+        </div>
+      </div>
+
+      <div class="date">
+        <mat-form-field>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              [ngClass]="
+                startDate!.touched && startDate!.invalid ? 'error-class' : ''
+              "
+              formControlName="startDate"
+            />
+
+            <input
+              matEndDate
+              placeholder="End date"
+              [ngClass]="
+                endDate!.touched && endDate!.invalid ? 'error-class' : ''
+              "
+              formControlName="endDate"
+            />
+          </mat-date-range-input>
+
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <button class="calendarBtn" type="button" (click)="picker.open()">
+          <img src="../../../../assets/icons/cal.png" />
+        </button>
+      </div>
+
+      <div class="submit-container">
+        <button
+          *ngIf="myForm.valid"
+          type="button"
+          mat-dialog-close
+          mat-raised-button
+          (click)="submit()"
+        >
+          submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

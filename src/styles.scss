@@ -1,1 +1,151 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$PackItRight-primary: mat.define-palette(mat.$indigo-palette);
+$PackItRight-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$PackItRight-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$PackItRight-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $PackItRight-primary,
+      accent: $PackItRight-accent,
+      warn: $PackItRight-warn
+    )
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($PackItRight-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #838383;
+  -webkit-tap-highlight-color: transparent;
+  background-image: url(./assets/images/Desert-Night-Desktop-Wallpaper.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+
+  transition: 300ms;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    background-image: url(./assets/images/Desert-Night-Smartphone-Wallapaper.webp);
+  }
+}
+
+.mat-menu-style {
+  background: rgba(104, 104, 104, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(104, 104, 104, 0.3);
+  -webkit-tap-highlight-color: transparent;
+  button span {
+    color: wheat;
+    font-weight: 600;
+  }
+}
+
+.dialog-style {
+  mat-dialog-container .mat-mdc-dialog-surface.mdc-dialog__surface {
+    background: rgba(166, 166, 166, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.mat-datepicker-popup {
+  position: relative;
+  margin: auto;
+  mat-datepicker-content {
+    background: rgb(94 94 94 / 50%);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border-radius: 10px;
+
+    mat-calendar {
+      mat-calendar-header {
+        button {
+          color: wheat !important;
+
+          polygon {
+            fill: wheat;
+            font-weight: 600;
+          }
+        }
+      }
+
+      mat-month-view,
+      mat-year-view,
+      mat-multi-year-view {
+        table thead {
+          color: wheat;
+          font-weight: 600;
+        }
+
+        table {
+          thead tr:last-child th::after {
+            background-color: wheat;
+            font-weight: 600;
+            left: 2.5%;
+            right: 2.5%;
+          }
+
+          tbody tr td,
+          tbody tr td button span {
+            color: wheat;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mat-calendar-body-selected {
+  background-color: #4f2a78;
+  color: wheat;
+  font-weight: 600;
+}

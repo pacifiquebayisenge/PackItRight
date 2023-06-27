@@ -1,0 +1,36 @@
+<div
+  [routerLink]="!toEdit && !toDelete ? trip.id : ''"
+  class="trip-card-container"
+>
+  <div *ngIf="toEdit || toDelete" class="action-btns">
+    <div *ngIf="toEdit" (click)="editTrip()" class="edit">
+      <img src="../../../../../assets/icons/editing.png" alt="edit icons" />
+    </div>
+
+    <div *ngIf="toDelete" (click)="deleteTrip()" class="delete">
+      <img src="../../../../../assets/icons/delete.png" alt="delete icon" />
+    </div>
+  </div>
+
+  <div class="info">
+    <div
+      class="flag-container"
+      #tooltip="matTooltip"
+      [matTooltip]="trip.country"
+      [matTooltipPosition]="position.value!"
+      matTooltipHideDelay="300"
+    >
+      <img [src]="imgSrc" alt="" />
+    </div>
+
+    <label class="city">{{ trip.city }}</label>
+
+    <div class="days">
+      <label>{{
+        this.trip.endDate.toDate() - this.trip.startDate.toDate() | date : 'd'
+      }}</label>
+
+      <label>days</label>
+    </div>
+  </div>
+</div>

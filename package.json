@@ -2,30 +2,36 @@
   "name": "pack-it-right",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve",
+    "start": "ng serve --hmr --live-reload --watch --open",
+    "lint": "ng lint",
+    "push": "npm run lint && git add . && git commit  && git push",
+    "deploy": "ng build && firebase deploy",
     "build": "ng build",
-    "push": "git add . && git commit",
-    "prepare": "husky install client/.husky",
+    "prepare": "husky install .husky",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "ng": "ng"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx husky add ./client/.husky/pre-commit 'npx pretty-quick --staged ng lint ng test' ",
+      "pre-commit": "npx pretty-quick --staged ng lint ng test",
       "pre-push": "ng build --aot true"
     }
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
+    "@angular/cdk": "^16.1.1",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
+    "@angular/fire": "^7.6.1",
     "@angular/forms": "^16.0.0",
+    "@angular/material": "^16.1.1",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "firebase": "^9.23.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

@@ -1,0 +1,87 @@
+.option-dialog-container {
+  height: 80dvh;
+  max-height: 80dvh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  h2 {
+    text-align: center;
+    color: wheat;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .action-btns {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 5rem;
+
+      button {
+        background-color: unset;
+        font-weight: 600;
+        color: wheat;
+        font-size: 2rem;
+      }
+    }
+
+    form div div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3rem;
+
+      input {
+        all: unset;
+        border-radius: 0.5rem;
+
+        border: 0.1rem solid rgb(181, 189, 196);
+        font-size: 2rem;
+        font-weight: 700;
+        height: 4rem;
+        line-height: 2.4rem;
+        padding: 1rem 2rem;
+        color: #ffffff;
+
+        background: rgba(166, 166, 166, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(105, 31, 135, 0.37);
+        backdrop-filter: blur(6.5px);
+        -webkit-backdrop-filter: blur(6.5px);
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        &:hover {
+          caret-color: white;
+        }
+
+        &:focus {
+          background: rgba(166, 166, 166, 0.5);
+          border-color: #6a3bdf;
+          box-shadow: 0.1rem 0.1rem 0 #5c3bdf;
+        }
+
+        &.error-class {
+          border-color: red !important;
+          box-shadow: 0.1rem 0.1rem 0 red !important;
+        }
+      }
+
+      button {
+        background-color: unset;
+        font-weight: 600;
+        color: wheat;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+}

@@ -1,0 +1,99 @@
+.trip-page-container {
+  margin: 2rem 3rem;
+  height: 100dvh;
+
+  .header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 5rem;
+
+    .back-container {
+      width: 4rem;
+      height: 4rem;
+      background-color: unset;
+      border: unset;
+      cursor: pointer;
+      transition: 300ms;
+      margin-right: 2rem;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        color: #808080;
+        filter: invert(52%) sepia(3%) saturate(12%) hue-rotate(328deg)
+          brightness(96%) contrast(87%);
+      }
+    }
+
+    label {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #bdbdbd;
+    }
+
+    .flag {
+      width: 3rem;
+      height: 3rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .content {
+    .top {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      label {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #bdbdbd;
+      }
+
+      .icon-container {
+        border: none;
+        background-color: unset;
+        padding: 0;
+        width: 2.5rem;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        img {
+          filter: invert(48%) sepia(66%) saturate(4%) hue-rotate(5deg)
+            brightness(93%) contrast(90%);
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    mat-selection-list {
+      mat-list-option {
+        font-size: 2rem;
+        font-weight: 700;
+        .mat-pseudo-checkbox {
+          background-color: red;
+        }
+
+        .option {
+          color: wheat;
+        }
+
+        span span {
+          color: wheat !important;
+        }
+      }
+    }
+  }
+}

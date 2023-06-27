@@ -1,0 +1,40 @@
+<div class="option-dialog-container">
+  <h2>Adding a new trip item</h2>
+
+  <div class="content">
+    <div class="action-btns">
+      <button mat-raised-button class="" color="primary" (click)="addNext('')">
+        Add Item
+      </button>
+
+      <button
+        *ngIf="this.allItems.valid && itemsControls.length > 0"
+        mat-raised-button
+        mat-dialog-close
+        class=""
+        color="primary"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+    </div>
+
+    <form [formGroup]="allItems">
+      <ng-container formArrayName="items">
+        <div *ngFor="let field of itemsControls; let i = index">
+          <div [formGroupName]="i">
+            <input
+              [ngClass]="field!.touched && field!.invalid ? 'error-class' : ''"
+              formControlName="name"
+              type="text"
+              placeholder="Item {{ i + 1 }}"
+            />
+            <button mat-raised-button class="closeBtn" (click)="removeField(i)">
+              <i class="material-icons">close</i>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </form>
+  </div>
+</div>

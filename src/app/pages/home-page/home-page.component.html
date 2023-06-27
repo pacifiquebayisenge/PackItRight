@@ -1,1 +1,24 @@
-<p>home-page works!</p>
+<div class="home-page-container">
+  <div class="trip-list-container">
+    <div class="header">
+      <label class="title">Trip list</label>
+      <button [matMenuTriggerFor]="menu" class="settings">
+        <img src="../../../assets/icons/gear.png" alt="gear icon" />
+      </button>
+      <mat-menu class="mat-menu-style" #menu="matMenu">
+        <button mat-menu-item (click)="openDialog()">Add</button>
+        <button mat-menu-item (click)="editTripTrigger()">Edit</button>
+        <button mat-menu-item (click)="deleteTripTrigger()">Delete</button>
+      </mat-menu>
+    </div>
+
+    <div class="list">
+      <app-trip-card
+        *ngFor="let trip of tripList"
+        [trip]="trip"
+        [toEdit]="isEditTrip"
+        [toDelete]="isDeleteTrip"
+      ></app-trip-card>
+    </div>
+  </div>
+</div>

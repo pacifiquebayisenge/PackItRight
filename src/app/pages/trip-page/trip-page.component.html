@@ -1,0 +1,38 @@
+<div class="trip-page-container">
+  <div class="header">
+    <button class="back-container" routerLink="/">
+      <img src="../../../assets/icons/home.png" alt="home icon" />
+    </button>
+
+    <label class="title">Trip to</label>
+    <div
+      class="flag"
+      #tooltip="matTooltip"
+      [matTooltip]="trip.country"
+      [matTooltipPosition]="position.value!"
+      matTooltipHideDelay="300"
+    >
+      <img [src]="imgSrc" alt="" />
+    </div>
+    <label *ngIf="trip"> {{ trip.city || '' }}</label>
+  </div>
+
+  <div class="content">
+    <div class="top">
+      <label>What to pack</label>
+
+      <button (click)="openDialog()" class="icon-container">
+        <img src="../../../assets/icons/gear.png" alt="gear icon" />
+      </button>
+    </div>
+
+    <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let item of itemList">
+        <span class="option">{{ item.item }}</span>
+      </mat-list-option>
+      <mat-list-option *ngIf="itemList.length == 0">
+        <span class="option">Empty 🤔</span>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

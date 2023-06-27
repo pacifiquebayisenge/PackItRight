@@ -1,0 +1,26 @@
+<div class="delete-dialog-container">
+  <h2>Delete a trip</h2>
+
+  <div class="content">
+    <h3>Are you sure you want to delete this trip ?</h3>
+    <h3>
+      {{ this.data.country }} : {{ this.data.city }} :
+      {{
+        this.data.endDate.toDate() - this.data.startDate.toDate() | date : 'd'
+      }}
+      days
+    </h3>
+
+    <div class="action-btns">
+      <button type="button" mat-dialog-close mat-raised-button>Cancel</button>
+      <button
+        type="button"
+        mat-dialog-close
+        (click)="submit()"
+        mat-raised-button
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
